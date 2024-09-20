@@ -20,11 +20,11 @@ const Header: React.FC = () => {
 
       {/* Text Version */}
       <h1 className="sr-only">
-        Amruth Pillai - Resume on the Web
+        Dnyaneshwar Shekade - Portfolio
         <br />
         Designer, Developer, Photographer, Writer
         <br />
-        Berlin, Germany &amp; Bengaluru, India
+        Mumbai, India &amp; Beed, Maharashtra
       </h1>
 
       {/* Ingredients */}
