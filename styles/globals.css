@@ -50,3 +50,10 @@ body {
     background-color: #ff9800; /* Change color at the end */
   }
 }
+
+/*rpoject */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

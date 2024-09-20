@@ -35,7 +35,7 @@ const Projects = () => {
         });
 
         const formattedProjects = response.data
-          .filter((repo: any) => repo.stargazers_count > 0) // Filter to include only starred projects
+          .filter((repo: any) => repo.stargazers_count > 0)
           .map((repo: any) => ({
             name: repo.name,
             summary: repo.description || 'No description available',
@@ -75,9 +75,9 @@ const Projects = () => {
               className="rounded-lg overflow-hidden"
             />
 
-            <h4 className="text-lg font-bold">{project.name}</h4>
+            <h4 className="text-lg font-bold truncate">{project.name}</h4> {/* Added truncate class */}
 
-            <p className="prose prose-sm prose-neutral dark:prose-invert">{project.summary}</p>
+            <p className="prose prose-sm prose-neutral dark:prose-invert overflow-hidden text-ellipsis whitespace-nowrap">{project.summary}</p> {/* Added overflow and text classes */}
 
             {project.link && (
               <div className="mt-1 flex gap-4">
