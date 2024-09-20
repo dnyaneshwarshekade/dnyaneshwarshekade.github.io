@@ -20,7 +20,7 @@ const Projects = () => {
       try {
         const response = await axios.get('https://api.github.com/users/dnyaneshwarshekade/repos', {
           headers: {
-            'Authorization': `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`
+
           }
         });
         const formattedProjects = response.data.map(repo => ({
