@@ -22,6 +22,7 @@ import {
 import { getArticles, getDribbbleShots, getInstagramMedia } from "services";
 import type { Article, DribbbleShot, InstagramMedia } from "types/Sections";
 
+// Updated getStaticProps without ISR revalidate option
 export const getStaticProps: GetStaticProps = async () => {
   const articles = await getArticles();
   const dribbbleShots = await getDribbbleShots();
@@ -29,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { articles, dribbbleShots, instagramMedia },
-    revalidate: 10, // Optional: Revalidate every 10 seconds
+    // Removed revalidate since it's not compatible with static export
   };
 };
 
