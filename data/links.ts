@@ -1,13 +1,13 @@
 const links = {
-  instagram: "https://pillai.xyz/instagram",
-  linkedin: "https://pillai.xyz/linkedin",
-  twitter: "https://pillai.xyz/twitter",
-  github: "https://pillai.xyz/github",
-  dribbble: "https://pillai.xyz/dribbble",
-  dev: "https://pillai.xyz/dev",
-  facebook: "https://pillai.xyz/facebook",
-  resume: "https://pillai.xyz/resume-pdf",
-  repository: "https://github.com/AmruthPillai/ResumeOnTheWeb",
+  instagram: "https://yourwebsite.com/instagram", // Update with your Instagram link
+  linkedin: "https://yourwebsite.com/linkedin", // Update with your LinkedIn link
+  twitter: "https://yourwebsite.com/twitter", // Update with your Twitter link
+  github: "https://github.com/dnyaneshwarshekade", // Your GitHub link
+  dribbble: "https://yourwebsite.com/dribbble", // Update with your Dribbble link
+  dev: "https://yourwebsite.com/dev", // Update with your Dev link
+  facebook: "https://yourwebsite.com/facebook", // Update with your Facebook link
+  resume: "https://yourwebsite.com/resume-pdf", // Update with your resume link
+  repository: "https://github.com/dnyaneshwarshekade/portfolio.git", // Your portfolio repository link
 };
 
 export default links;
