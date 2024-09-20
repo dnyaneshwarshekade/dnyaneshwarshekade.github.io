@@ -10,8 +10,8 @@ const AboutMe = () => (
       <div className="relative col-span-1 hidden md:block">
         <Image
           fill
-          alt="Selfie Boy"
-          src="/images/about-me/selfie-boy.svg"
+          alt="Dnyaneshwar Shekade"
+          src="/images/about-me/selfie-boy.svg" // Update this path if you have a different image
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
@@ -20,34 +20,23 @@ const AboutMe = () => (
         <p>Hey there!</p>
 
         <p>
-          I&apos;m Amruth Pillai, and as you might have already read, I&apos;m a designer, developer, photographer and a
-          writer. This website was made to showcase all of what I can do and plan to do. Don&apos;t judge my writing
-          based on this section though, this is by far my shoddiest work yet.
+          I&apos;m Dnyaneshwar Shekade, and as you might have already guessed, I&apos;m a Linux Server & DevOps Engineer. This website was created to showcase my skills and projects. Don&apos;t judge my writing based on this section; I hope to improve it over time.
         </p>
 
         <p>
-          I got into design because I consider myself a pseudo-perfectionist, if that&apos;s even a word? As in, I hate
-          to see things &apos;not look good&apos;. So I set out on a journey to make products that people use that
-          &apos;look great&apos;, and I&apos;m forever on that path.
+          I entered the IT field because I have a deep passion for technology and problem-solving. I thrive on optimizing systems and making them more efficient, ensuring that they run smoothly.
         </p>
 
         <p>
-          I got into development because computers have always fascinated me.<code>int i = 10;</code> creates an integer
-          of value 10? LIKE, WOW! But seriously, just seeing code getting converted to things we use regularly, like
-          Facebook or Amazon, was no less than magic to me and that&apos;s where my quest to invent began.
+          My expertise lies in server management, virtualization, and cloud services, with a keen interest in Deep Learning and AI. I love exploring new technologies and finding innovative solutions to complex challenges.
         </p>
 
         <p>
-          I got into photography for a very philosophical reason and a very weird one at that. To me, photography is no
-          less than time-travel. When I look at a photo, I am instantly transported to that moment in time when I shot
-          it, that memory takes over. It&apos;s a beautiful art form to express creativity as well, and it&apos;s been a
-          passion of mine since my childhood.
+          Outside of work, I enjoy reading technical literature, playing cricket, and watching YouTube videos on various topics. I believe that continuous learning is key to staying relevant in this fast-paced field.
         </p>
 
         <p>
-          I created this website so I could showcase all this and through this process, make it easier for you to
-          connect with me. If you like what you see, head over to the <a href="#contact">contact section</a> below and
-          send me a text. I would love to hear from you!
+          I created this website to showcase my work and make it easier for you to connect with me. If you like what you see, head over to the <a href="#contact">contact section</a> below and send me a message. I would love to hear from you!
         </p>
       </div>
     </div>

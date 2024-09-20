@@ -12,75 +12,72 @@ type Skill = {
 const skills: Skill[] = [
   {
     id: 1,
-    icon: "/images/skills/web.png",
-    name: "Web Design & Development",
-    technologies: ["HTML", "CSS", "JavaScript", "TypeScript"],
+    icon: "/images/skills/linux.png", // Add appropriate icon for Linux Server Management
+    name: "Linux Server Management",
+    technologies: [
+      "Ubuntu",
+      "CentOS",
+      "AlmaLinux",
+      "Red Hat",
+      "Bash/Shell Scripting",
+      "SSH",
+      "IPTables",
+      "Firewalld"
+    ],
   },
   {
     id: 2,
-    icon: "/images/skills/angular.png",
-    name: "Frontend Javascript Frameworks",
-    technologies: ["Angular", "React", "Vue.js", "Svelte"],
+    icon: "/images/skills/monitoring.png", // Add appropriate icon for Monitoring
+    name: "Server Monitoring & Performance Tuning",
+    technologies: ["Syslog", "Journalctl"],
   },
   {
     id: 3,
-    icon: "/images/skills/nodejs.png",
-    name: "Backend Javascript Frameworks",
-    technologies: ["Node.js", "Express.js", "NestJS"],
+    icon: "/images/skills/virtualization.png", // Add appropriate icon for Virtualization
+    name: "Virtualization Management",
+    technologies: ["KVM", "Xen", "OpenVZ", "LXC"],
   },
   {
     id: 4,
-    icon: "/images/skills/flutter.png",
-    name: "Cross Platform App Development",
-    technologies: ["Dart", "Flutter", "Firebase"],
+    icon: "/images/skills/webuzo.png", // Add appropriate icon for Webuzo
+    name: "Webuzo Management",
+    technologies: ["Softaculous", "Application Deployment"],
   },
   {
     id: 5,
-    icon: "/images/skills/python.png",
-    name: "Scripting Frameworks",
-    technologies: ["Python", "Rust", "Selenium", "Puppeteer"],
+    icon: "/images/skills/aws.png", // Add appropriate icon for AWS
+    name: "AWS & Cloud Management",
+    technologies: ["EC2", "S3", "AWS Management Console"],
   },
   {
     id: 6,
-    icon: "/images/skills/database.png",
-    name: "Database Management System",
-    technologies: ["Postgres", "TypeORM", "MongoDB", "Mongoose"],
+    icon: "/images/skills/database.png", // Add appropriate icon for Database
+    name: "Database Management",
+    technologies: ["MySQL", "MariaDB", "Performance Tuning"],
   },
   {
     id: 7,
-    icon: "/images/skills/android.png",
-    name: "Android App Development",
-    technologies: ["Android Studio", "Java", "Kotlin", "XML"],
+    icon: "/images/skills/webserver.png", // Add appropriate icon for Web Server
+    name: "Web Server Management",
+    technologies: ["Apache", "Nginx", "OpenLiteSpeed"],
   },
   {
     id: 8,
-    icon: "/images/skills/sketch.png",
-    name: "UI/UX Design",
-    technologies: ["Adobe XD", "Figma", "Sketch"],
+    icon: "/images/skills/email.png", // Add appropriate icon for Email Services
+    name: "Email Services Management",
+    technologies: ["Exim", "Postfix", "Dovecot", "Courier"],
   },
   {
     id: 9,
-    icon: "/images/skills/tensorflow.png",
-    name: "Data Processing & Machine Learning",
-    technologies: ["R", "scikit-learn", "TensorFlow", "Keras"],
+    icon: "/images/skills/controlpanel.png", // Add appropriate icon for Control Panels
+    name: "Control Panels Management",
+    technologies: ["cPanel", "Plesk", "Webuzo"],
   },
   {
     id: 10,
-    icon: "/images/skills/seo.png",
-    name: "Search Engine Optimization",
-    technologies: ["PageRank", "Backlinks", "Google Analytics"],
-  },
-  {
-    id: 11,
-    icon: "/images/skills/photography.png",
-    name: "Photography & Cinematography",
-    technologies: ["Adobe Photoshop", "Adobe Lightroom"],
-  },
-  {
-    id: 12,
-    icon: "/images/skills/fcpx.png",
-    name: "Photo & Video Post-Processing",
-    technologies: ["Adobe After Effects", "Final Cut Pro X"],
+    icon: "/images/skills/programming.png", // Add appropriate icon for Programming
+    name: "Programming & Scripting",
+    technologies: ["PHP", "Python", "Bash Scripting"],
   },
 ];
 

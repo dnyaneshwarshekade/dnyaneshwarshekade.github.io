@@ -3,10 +3,10 @@ import clsx from "clsx";
 import Image from "next/image";
 
 const photos: string[] = [
-  "/images/photo-wall/photo-3jn2.jpg",
-  "/images/photo-wall/photo-7sm2.jpg",
-  "/images/photo-wall/photo-9ns6.jpg",
-  "/images/photo-wall/photo-2js9.jpg",
+  "/images/photo-wall/dnyaneshwar1.jpg",
+  "/images/photo-wall/dnyaneshwar2.jpg",
+  "/images/photo-wall/dnyaneshwar3.jpg",
+  "/images/photo-wall/dnyaneshwar4.jpg",
 ];
 
 type Props = {
@@ -37,7 +37,7 @@ const PhotoWall: React.FC<Props> = ({ size = 512 }) => {
             fill
             priority
             src={photo}
-            alt="Amruth Pillai"
+            alt="Dnyaneshwar Shekade"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={clsx("object-cover", { "rounded-l": index === 0, "rounded-r": index === photos.length - 1 })}
           />
