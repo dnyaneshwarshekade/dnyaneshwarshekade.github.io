@@ -50,7 +50,7 @@ const Home: NextPage<Props> = ({ articles, dribbbleShots, instagramMedia }) => (
     </div>
     <Skills />
     <Projects />
-    <Blog articles={articles} />
+    <Blog />
     <Languages />
     <div className="grid lg:grid-cols-3 gap-12">
       <Achievements />
