@@ -12,7 +12,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>Dnyaneshwar Shekade's - Portfolio</title>
+      <title>Dnyaneshwar Shekade&apos;s - Portfolio</title>
       </Head>
 
       <ThemeProvider>
