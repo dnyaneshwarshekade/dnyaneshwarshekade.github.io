@@ -1,6 +1,6 @@
 const links = {
-  instagram: "https://yourwebsite.com/instagram", // Update with your Instagram link
-  linkedin: "https://yourwebsite.com/linkedin", // Update with your LinkedIn link
+  instagram: "https://instagram.com/shekade_dnyaneshwar", // Update with your Instagram link
+  linkedin: "https://linkedin.com/in/dnyaneshwarshekade", // Update with your LinkedIn link
   twitter: "https://yourwebsite.com/twitter", // Update with your Twitter link
   github: "https://github.com/dnyaneshwarshekade", // Your GitHub link
   dribbble: "https://yourwebsite.com/dribbble", // Update with your Dribbble link
