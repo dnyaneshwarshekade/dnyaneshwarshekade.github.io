@@ -1,10 +1,10 @@
-import Image from "next/image";
+import { FaLinux, FaChartLine, FaCloud, FaDatabase, FaServer, FaEnvelope, FaCogs, FaCode, FaDesktop } from 'react-icons/fa';
 import { Section } from "types/Sections";
 import { getSectionHeading } from "utils";
 
 type Skill = {
   id: number;
-  icon: string;
+  icon: JSX.Element;
   name: string;
   technologies: string[];
 };
@@ -12,7 +12,7 @@ type Skill = {
 const skills: Skill[] = [
   {
     id: 1,
-    icon: "/images/skills/linux.png", // Add appropriate icon for Linux Server Management
+    icon: <FaLinux />,
     name: "Linux Server Management",
     technologies: [
       "Ubuntu",
@@ -27,55 +27,55 @@ const skills: Skill[] = [
   },
   {
     id: 2,
-    icon: "/images/skills/monitoring.png", // Add appropriate icon for Monitoring
+    icon: <FaChartLine />,
     name: "Server Monitoring & Performance Tuning",
     technologies: ["Syslog", "Journalctl"],
   },
   {
     id: 3,
-    icon: "/images/skills/virtualization.png", // Add appropriate icon for Virtualization
+    icon: <FaCloud />,
     name: "Virtualization Management",
     technologies: ["KVM", "Xen", "OpenVZ", "LXC"],
   },
   {
     id: 4,
-    icon: "/images/skills/webuzo.png", // Add appropriate icon for Webuzo
+    icon: <FaCogs />,
     name: "Webuzo Management",
     technologies: ["Softaculous", "Application Deployment"],
   },
   {
     id: 5,
-    icon: "/images/skills/aws.png", // Add appropriate icon for AWS
+    icon: <FaCloud />,
     name: "AWS & Cloud Management",
     technologies: ["EC2", "S3", "AWS Management Console"],
   },
   {
     id: 6,
-    icon: "/images/skills/database.png", // Add appropriate icon for Database
+    icon: <FaDatabase />,
     name: "Database Management",
     technologies: ["MySQL", "MariaDB", "Performance Tuning"],
   },
   {
     id: 7,
-    icon: "/images/skills/webserver.png", // Add appropriate icon for Web Server
+    icon: <FaServer />,
     name: "Web Server Management",
     technologies: ["Apache", "Nginx", "OpenLiteSpeed"],
   },
   {
     id: 8,
-    icon: "/images/skills/email.png", // Add appropriate icon for Email Services
+    icon: <FaEnvelope />,
     name: "Email Services Management",
     technologies: ["Exim", "Postfix", "Dovecot", "Courier"],
   },
   {
     id: 9,
-    icon: "/images/skills/controlpanel.png", // Add appropriate icon for Control Panels
+    icon: <FaDesktop />,
     name: "Control Panels Management",
     technologies: ["cPanel", "Plesk", "Webuzo"],
   },
   {
     id: 10,
-    icon: "/images/skills/programming.png", // Add appropriate icon for Programming
+    icon: <FaCode />,
     name: "Programming & Scripting",
     technologies: ["PHP", "Python", "Bash Scripting"],
   },
@@ -91,8 +91,8 @@ const Skills = () => (
           key={skill.id}
           className="px-4 py-2 border border-neutral-900/10 dark:border-neutral-50/10 hover:border-neutral-900/30 dark:hover:border-neutral-50/30 rounded flex items-center gap-4 transition-colors duration-700 hover:duration-100"
         >
-          <div className="w-5 h-5">
-            <Image src={skill.icon} width={20} height={20} alt={skill.name} className="object-contain" />
+          <div className="w-5 h-5 text-orange-500"> {/* Set text color to orange */}
+            {skill.icon}
           </div>
 
           <div className="min-w-0 flex-1 flex flex-col">
