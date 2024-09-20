@@ -44,7 +44,6 @@ const Projects = () => {
         }));
         setProjects(formattedProjects);
       } catch (err: unknown) {
-        // Cast the error to string for better handling
         setError((err as Error).message);
       } finally {
         setLoading(false);
@@ -61,9 +60,9 @@ const Projects = () => {
     <div id={Section.Projects} className="px-4">
       {getSectionHeading(Section.Projects)}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {projects.map((project, index) => (
-          <div key={index} className="flex flex-col gap-2">
+          <div key={index} className="flex flex-col gap-2 p-4 border rounded-lg shadow-md transition-transform transform hover:scale-105">
             <ImageLink
               alt={project.name}
               src={project.image}
@@ -77,11 +76,11 @@ const Projects = () => {
             <p className="prose prose-sm prose-neutral dark:prose-invert">{project.summary}</p>
 
             {project.link && (
-              <div className="mt-1 flex gap-5">
+              <div className="mt-1 flex gap-4">
                 {project.link.web && (
                   <Tippy content="Visit Website" placement="bottom">
                     <a href={project.link.web} target="_blank" rel="noreferrer">
-                      <BiLinkExternal fontSize={18} />
+                      <BiLinkExternal fontSize={20} />
                     </a>
                   </Tippy>
                 )}
@@ -89,7 +88,7 @@ const Projects = () => {
                 {project.link.github && (
                   <Tippy content="Checkout Source Code" placement="bottom">
                     <a href={project.link.github} target="_blank" rel="noreferrer">
-                      <FaGithub fontSize={18} />
+                      <FaGithub fontSize={20} />
                     </a>
                   </Tippy>
                 )}

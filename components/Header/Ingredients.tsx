@@ -40,11 +40,14 @@ const Ingredients = () => {
               .typeString("<span class='text-green-500'>dnyaneshwar@linux:</span>")
               .typeString("<span class='text-blue-500'>~$</span> cat /etc/dnyaneshwar-release<br>")
               .pauseFor(500)
-              .typeString("<span class='text-green-500'>Dnyaneshwar OS</span><br>")
-              .typeString("<span class='text-gray-500'>Version: 1.0.0</span><br>")
-              .typeString("<span class='text-gray-500'>Codename: Dnyaneshwar</span><br>")
-              .typeString("<span class='text-gray-500'>Release Date: 2024-09-20</span><br>")
-              .typeString("<span class='text-gray-500'>Architecture: x86_64</span><br>")
+              .typeString("<span class='text-green-500'>AboutDnyaneshwar</span><br>")
+              .typeString("<span class='pl-5'></span><span class='text-red-500'>Designer</span>, ")
+              .typeString("<span class='text-red-500'>Administrator</span>, ")
+              .typeString("<span class='text-red-500'>Photographer</span>, ")
+              .typeString("<span class='text-red-500'>Writer</span>,<br>")
+              .typeString("<span class='pl-5'></span><span class='text-red-500'>Sugar</span>, ")
+              .typeString("<span class='text-red-500'>Spice</span>, ")
+              .typeString("<span class='text-red-500'>...everythingNice</span><br>")
               .start();
             }}
           />
