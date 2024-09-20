@@ -1,5 +1,5 @@
-import Typewriter from "typewriter-effect";
 import { useState } from "react";
+import Typewriter from "typewriter-effect";
 
 const Ingredients = () => {
   const [loading, setLoading] = useState(false);
@@ -36,19 +36,19 @@ const Ingredients = () => {
             options={{ delay: 40 }}
             onInit={(typewriter) => {
               typewriter
-              .pauseFor(2000)
-              .typeString("<span class='text-green-500'>dnyaneshwar@linux:</span>")
-              .typeString("<span class='text-blue-500'>~$</span> cat /etc/dnyaneshwar-release<br>")
-              .pauseFor(500)
-              .typeString("<span class='text-green-500'>AboutDnyaneshwar</span><br>")
-              .typeString("<span class='pl-5'></span><span class='text-red-500'>Designer</span>, ")
-              .typeString("<span class='text-red-500'>Administrator</span>, ")
-              .typeString("<span class='text-red-500'>Photographer</span>, ")
-              .typeString("<span class='text-red-500'>Writer</span>,<br>")
-              .typeString("<span class='pl-5'></span><span class='text-red-500'>Sugar</span>, ")
-              .typeString("<span class='text-red-500'>Spice</span>, ")
-              .typeString("<span class='text-red-500'>...everythingNice</span><br>")
-              .start();
+                .pauseFor(2000)
+                .typeString("<span class='text-green-500'>dnyaneshwar@linux:</span>")
+                .typeString("<span class='text-blue-500'>~$</span> cat /etc/dnyaneshwar-release<br>")
+                .pauseFor(500)
+                .typeString("<span class='text-green-500'>AboutDnyaneshwar</span><br>")
+                .typeString("<span class='pl-5'></span><span class='text-red-500'>Designer</span>, ")
+                .typeString("<span class='text-red-500'>Administrator</span>, ")
+                .typeString("<span class='text-red-500'>Photographer</span>, ")
+                .typeString("<span class='text-red-500'>Writer</span>,<br>")
+                .typeString("<span class='pl-5'></span><span class='text-red-500'>Sugar</span>, ")
+                .typeString("<span class='text-red-500'>Spice</span>, ")
+                .typeString("<span class='text-red-500'>...everythingNice</span><br>")
+                .start();
             }}
           />
         </code>
