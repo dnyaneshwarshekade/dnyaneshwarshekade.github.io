@@ -23,7 +23,7 @@ type Education = {
 const education: Education[] = [
   {
     id: 1,
-    logo: "/images/education/udcs.jpg", // Update with the actual logo path
+    logo: "/images/education/udcs.jpg",
     institution: "Department of Computer Science, University of Mumbai",
     degree: "Master of Science (M.Sc)",
     study: "Computer Science",
@@ -33,7 +33,7 @@ const education: Education[] = [
   },
   {
     id: 2,
-    logo: "/images/education/acharya.jpg", // Update with the actual logo path
+    logo: "/images/education/acharya.jpg",
     institution: "N. G. Acharya & D. K. Marathe College",
     degree: "Bachelor of Science (B.Sc)",
     study: "Computer Science",
@@ -43,7 +43,7 @@ const education: Education[] = [
   },
   {
     id: 3,
-    logo: "/images/education/ycm.jpg", // Update with the actual logo path
+    logo: "/images/education/ycm.jpg",
     institution: "YCMOU - Digital University",
     degree: "Bachelor of Arts",
     study: "Literature and History",
@@ -53,7 +53,7 @@ const education: Education[] = [
   },
   {
     id: 4,
-    logo: "/images/education/siws.jpg", // Update with the actual logo path
+    logo: "/images/education/siws.jpg",
     institution: "SIWS College",
     degree: "Higher Secondary Certificate (H.S.C)",
     study: "Science",
@@ -69,40 +69,49 @@ type Props = {
   isLast: boolean;
 };
 
-const Education: React.FC<Props> = ({ data, isFirst, isLast }) => (
-  <div className="flex group">
-    <div
-      className={clsx("ml-1 w-1 flex-shrink-0 bg-neutral-500/25", {
-        "rounded-t": isFirst,
-        "rounded-b": isLast,
-      })}
-    />
-    <div className="-ml-2 mt-8 flex-shrink-0 relative w-3 h-3 rounded-full shadow-lg bg-teal-500/80 dark:bg-white/80 group-hover:w-6 transition-[width]" />
-    <div className="mt-5 ml-8 grid gap-2 pb-2">
-      <div className="relative w-10 h-10">
-        <Image src={data.logo} width={40} height={40} alt={data.institution} className="object-contain" />
+const Education: React.FC<Props> = ({ data, isFirst, isLast }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div className="flex group">
+      <div
+        className={clsx("ml-1 w-1 flex-shrink-0 bg-neutral-500/25", {
+          "rounded-t": isFirst,
+          "rounded-b": isLast,
+        })}
+      />
+      <div className="-ml-2 mt-8 flex-shrink-0 relative w-3 h-3 rounded-full shadow-lg bg-teal-500/80 dark:bg-white/80 group-hover:w-6 transition-[width]" />
+      <div className="mt-5 ml-8 grid gap-2 pb-2">
+        <div className="relative w-10 h-10">
+          <Image src={data.logo} width={40} height={40} alt={data.institution} className="object-contain" />
+        </div>
+        <div>
+          <h3
+            className={`text-base font-bold underline transition-colors ${
+              isHovered ? 'text-orange-500' : 'text-white'
+            }`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <a href={data.website} target="_blank" rel="noopener noreferrer">
+              {data.institution}
+            </a>{" "}
+            <span className="text-xs">
+              ({data.period.start} - {data.period.end})
+            </span>
+          </h3>
+          <h4>
+            {data.degree}, {data.study}
+          </h4>
+        </div>
+        <h5 className="my-1 flex gap-2 items-center text-xs">
+          <FaLocationArrow />
+          <span>{data.location}</span>
+        </h5>
       </div>
-      <div>
-        <h3>
-          <span className="text-base font-bold">{data.institution}</span>{" "}
-          <span className="text-xs">
-            ({data.period.start} - {data.period.end})
-          </span>
-        </h3>
-        <h4>
-          {data.degree}, {data.study}
-        </h4>
-      </div>
-      <h5 className="my-1 flex gap-2 items-center text-xs">
-        <FaLocationArrow />
-        <span>{data.location}</span>
-      </h5>
-      <a href={data.website} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 underline">
-        Visit Website
-      </a>
     </div>
-  </div>
-);
+  );
+};
 
 const EducationTimeline = () => {
   const [showMore, setShowMore] = useState(false);

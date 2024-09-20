@@ -66,7 +66,9 @@ export type Achievement = {
 export type Certification = {
   id: number;
   title: string;
-  subtitle: string;
+  issuer: string; // Changed from subtitle to issuer
+  grade: string;  // Added grade property
+  certificateLink: string; // Added certificateLink property
 };
 
 export type Philantrophy = {

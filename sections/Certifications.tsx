@@ -13,13 +13,17 @@ const Certifications = () => (
           <div>
             <MdChevronRight
               fontSize={20}
-              className="relative left-0 group-hover:left-3 group-hover:text-teal-500 transition-[left_color]"
+              className="relative left-0 group-hover:left-3 group-hover:text-orange-500 transition-[left_color]"
             />
           </div>
 
           <div className="leading-relaxed">
-            <h5 className="font-bold group-hover:text-teal-500 transition-[color]">{certification.title}</h5>
-            <p className="prose prose-sm prose-neutral dark:prose-invert">{certification.subtitle}</p>
+            <h5 className="font-bold group-hover:text-orange-500 transition-[color]">{certification.title}</h5>
+            <p className="prose prose-sm prose-neutral dark:prose-invert">{certification.issuer}</p>
+            <p className="prose prose-sm prose-neutral dark:prose-invert">{certification.grade}</p>
+            <a href={certification.certificateLink} className="text-orange-500 hover:underline">
+              View Certificate
+            </a>
           </div>
         </div>
       ))}

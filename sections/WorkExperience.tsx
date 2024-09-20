@@ -121,17 +121,18 @@ const WorkExperience: React.FC<Props> = ({ data, isFirst, isLast }) => {
         </h5>
 
         {showSummary ? (
-          <>
-            <p className="prose prose-sm prose-neutral dark:prose-invert">{data.summary}</p>
-            <button onClick={() => setShowSummary(false)} className="text-teal-500 text-sm">
-              Read Less
-            </button>
-          </>
-        ) : (
-          <button onClick={() => setShowSummary(true)} className="text-teal-500 text-sm">
-            Read More 
-          </button>
-        )}
+  <>
+    <p className="prose prose-sm prose-neutral dark:prose-invert">{data.summary}</p>
+    <button onClick={() => setShowSummary(false)} className="text-orange-500 text-sm">
+      Read Less
+    </button>
+  </>
+) : (
+  <button onClick={() => setShowSummary(true)} className="text-orange-500 text-sm">
+    Read More 
+  </button>
+)}
+
 
         <p className="text-xs leading-relaxed prose-sm prose-neutral dark:prose-invert">
           <strong>Key Focus:</strong> {data.keyFocus.join(", ")}

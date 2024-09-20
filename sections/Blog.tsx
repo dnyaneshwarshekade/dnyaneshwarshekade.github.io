@@ -8,6 +8,7 @@ import { formatDateString, getSectionHeading, openURLInNewTab } from "utils";
 
 const Blog: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
+  const [visibleCount, setVisibleCount] = useState(5); // State to track visible articles
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -23,12 +24,17 @@ const Blog: React.FC = () => {
     fetchArticles();
   }, []);
 
+  // Function to show more articles
+  const handleShowMore = () => {
+    setVisibleCount((prevCount) => prevCount + 5); // Increase visible count by 5
+  };
+
   return (
     <div id={Section.Blog}>
       {getSectionHeading(Section.Blog)}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {articles.map((article) => (
+        {articles.slice(0, visibleCount).map((article) => (
           <div key={article.id} className="flex flex-col gap-2">
             <ImageLink href={article.url} alt={article.title} src={article.social_image} height={250} />
 
@@ -47,6 +53,12 @@ const Blog: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {visibleCount < articles.length && ( // Show button only if there are more articles
+        <Button className="mt-4" onClick={handleShowMore}>
+          Click here to display more
+        </Button>
+      )}
 
       <Button icon={FaDev} className="mt-8" onClick={() => openURLInNewTab(links.dev)}>
         Articles on DEV
