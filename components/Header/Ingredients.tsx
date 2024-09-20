@@ -1,5 +1,5 @@
-import { useState } from "react";
 import Typewriter from "typewriter-effect";
+import { useState } from "react";
 
 const Ingredients = () => {
   const [loading, setLoading] = useState(false);
@@ -7,7 +7,7 @@ const Ingredients = () => {
 
   const handleLoadClick = () => {
     if (loadCompleted) {
-      window.location.href = "https://dnyaneshwarshekade.github.io";
+      window.location.href = "https://dnyaneshwar.github.io";
     }
   };
 
@@ -31,24 +31,21 @@ const Ingredients = () => {
         <p className="terminal-title">bash</p>
       </div>
       <div className="terminal-body">
-        <code className="text-center leading-loose">
+        <code className="text-center leading-loose code-block">
           <Typewriter
             options={{ delay: 40 }}
             onInit={(typewriter) => {
               typewriter
-                .pauseFor(2000)
-                .typeString("<span class='text-green-500'>dnyaneshwar@linux:</span>")
-                .typeString("<span class='text-blue-500'>~$</span> cat /etc/dnyaneshwar-release<br>")
-                .pauseFor(500)
-                .typeString("<span class='text-green-500'>AboutDnyaneshwar</span><br>")
-                .typeString("<span class='pl-5'></span><span class='text-red-500'>Designer</span>, ")
-                .typeString("<span class='text-red-500'>Administrator</span>, ")
-                .typeString("<span class='text-red-500'>Photographer</span>, ")
-                .typeString("<span class='text-red-500'>Writer</span>,<br>")
-                .typeString("<span class='pl-5'></span><span class='text-red-500'>Sugar</span>, ")
-                .typeString("<span class='text-red-500'>Spice</span>, ")
-                .typeString("<span class='text-red-500'>...everythingNice</span><br>")
-                .start();
+              .pauseFor(2000)
+              .typeString("<span class='text-green-500'>dnyaneshwar@linux:</span>")
+              .typeString("<span class='text-blue-500'>~$</span> cat /etc/dnyaneshwar-release<br>")
+              .pauseFor(500)
+              .typeString("<span class='text-green-500'>Dnyaneshwar OS</span><br>")
+              .typeString("<span class='text-gray-500'>Version: 1.0.0</span><br>")
+              .typeString("<span class='text-gray-500'>Codename: Dnyaneshwar</span><br>")
+              .typeString("<span class='text-gray-500'>Release Date: 2024-09-20</span><br>")
+              .typeString("<span class='text-gray-500'>Architecture: x86_64</span><br>")
+              .start();
             }}
           />
         </code>
@@ -58,7 +55,7 @@ const Ingredients = () => {
           onMouseEnter={handleMouseEnter}
         >
           <div className={`loading-bar ${loadCompleted ? 'loaded' : loading ? 'loading' : ''}`}>
-            <span>{loadCompleted ? "Loaded Ubuntu : Click here to check My Ubuntu Portfolio" : loading ? "Loading Ubuntu..." : "Click here to check My Ubuntu portfolio"}</span>
+            <span>{loadCompleted ? "Loaded Ubuntu" : loading ? "Loading Ubuntu..." : "Hover to load Ubuntu"}</span>
           </div>
         </div>
       </div>

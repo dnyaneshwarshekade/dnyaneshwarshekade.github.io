@@ -10,3 +10,117 @@ body {
   @apply text-neutral-900 bg-neutral-50 dark:text-neutral-50 dark:bg-neutral-900;
   @apply text-xs sm:text-sm;
 }
+
+.terminal-window {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'Monaco', 'Courier New', monospace;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #2d2d2d;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.buttons span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ff5f56;
+}
+
+.buttons .minimize {
+  background-color: #ffbd2e;
+}
+
+.buttons .maximize {
+  background-color: #27c93f;
+}
+
+.terminal-title {
+  color: #d4d4d4;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.terminal-body {
+  padding: 15px;
+  white-space: pre-wrap;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+code {
+  color: #d4d4d4;
+}
+
+.text-blue-500 {
+  color: #569cd6;
+}
+
+.text-green-500 {
+  color: #6a9955;
+}
+
+.text-red-500 {
+  color: #d16969;
+}
+
+.pl-5 {
+  padding-left: 20px;
+}
+
+.loading-bar-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.loading-bar {
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.loading-bar span {
+  display: block;
+  padding: 10px;
+  color: #000;
+}
+
+.loading-bar.loading {
+  background-color: #ffb74d;
+  animation: loading-animation 2s linear forwards; /* Stop at 100% */
+}
+
+.loading-bar.loaded {
+  background-color: #4caf50; /* Green when loaded */
+}
+
+@keyframes loading-animation {
+  0% {
+    width: 0;
+    background-color: #ffb74d;
+  }
+  100% {
+    width: 100%;
+    background-color: #ff9800; /* Change color at the end */
+  }
+}
