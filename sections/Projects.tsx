@@ -2,7 +2,6 @@ import Tippy from "@tippyjs/react";
 import Button from "components/Button";
 import ImageLink from "components/ImageLink";
 import links from "data/links";
-import projectsList from "data/projects"; // Import your projectsList here
 import { BiLinkExternal } from "react-icons/bi";
 import { FaGithub } from "react-icons/fa";
 import { Section } from "types/Sections";
@@ -10,10 +9,21 @@ import { getSectionHeading, openURLInNewTab } from "utils";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+// Define the type for your project
+interface Project {
+  name: string;
+  summary: string;
+  link: {
+    github: string;
+    web: string;
+  };
+  image: string;
+}
+
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -23,20 +33,19 @@ const Projects = () => {
             'Authorization': `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`
           }
         });
-        const formattedProjects = response.data.map(repo => ({
-          id: repo.id,
+        const formattedProjects = response.data.map((repo: any) => ({
           name: repo.name,
           summary: repo.description || 'No description available',
-          tags: repo.topics || [], // Assuming topics are used as tags
           link: {
             github: repo.html_url,
-            web: repo.homepage || '', // If a homepage link is available
+            web: repo.homepage || '',
           },
           image: `https://via.placeholder.com/500x250?text=${repo.name}`, // Placeholder image
         }));
         setProjects(formattedProjects);
-      } catch (err) {
-        setError(err.message);
+      } catch (err: unknown) {
+        // Cast the error to string for better handling
+        setError((err as Error).message);
       } finally {
         setLoading(false);
       }
@@ -53,8 +62,8 @@ const Projects = () => {
       {getSectionHeading(Section.Projects)}
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => (
-          <div key={project.id} className="flex flex-col gap-2">
+        {projects.map((project, index) => (
+          <div key={index} className="flex flex-col gap-2">
             <ImageLink
               alt={project.name}
               src={project.image}
@@ -65,8 +74,6 @@ const Projects = () => {
             <h4 className="text-lg font-bold">{project.name}</h4>
 
             <p className="prose prose-sm prose-neutral dark:prose-invert">{project.summary}</p>
-
-            <p className="text-xs leading-relaxed font-bold">{project.tags.map((tag) => `#${tag}`).join(" ")}</p>
 
             {project.link && (
               <div className="mt-1 flex gap-5">
