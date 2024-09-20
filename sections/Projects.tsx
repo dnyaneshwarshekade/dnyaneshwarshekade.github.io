@@ -33,15 +33,19 @@ const Projects = () => {
             'Authorization': `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`
           }
         });
-        const formattedProjects = response.data.map((repo: any) => ({
-          name: repo.name,
-          summary: repo.description || 'No description available',
-          link: {
-            github: repo.html_url,
-            web: repo.homepage || '',
-          },
-          image: `https://via.placeholder.com/500x250?text=${repo.name}`, // Placeholder image
-        }));
+
+        const formattedProjects = response.data
+          .filter((repo: any) => repo.stargazers_count > 0) // Filter to include only starred projects
+          .map((repo: any) => ({
+            name: repo.name,
+            summary: repo.description || 'No description available',
+            link: {
+              github: repo.html_url,
+              web: repo.homepage || '',
+            },
+            image: `https://via.placeholder.com/500x250?text=${repo.name}`, // Placeholder image
+          }));
+
         setProjects(formattedProjects);
       } catch (err: unknown) {
         setError((err as Error).message);
