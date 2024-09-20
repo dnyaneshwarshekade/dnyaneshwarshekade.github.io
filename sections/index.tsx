@@ -4,7 +4,6 @@ export { default as Achievements } from "./Achievements";
 export { default as Blog } from "./Blog";
 export { default as Certifications } from "./Certifications";
 export { default as Contact } from "./Contact";
-export { default as Designs } from "./Designs";
 export { default as Education } from "./Education";
 export { default as Footer } from "./Footer";
 export { default as Header } from "./Header";

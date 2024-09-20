@@ -6,7 +6,6 @@ import {
   Blog,
   Certifications,
   Contact,
-  Designs,
   Education,
   Footer,
   Header,
@@ -59,7 +58,6 @@ const Home: NextPage<Props> = ({ articles, dribbbleShots, instagramMedia }) => (
     </div>
     <Photography instagramMedia={instagramMedia} />
     <Music />
-    <Designs dribbbleShots={dribbbleShots} />
     <Resume />
     <Contact />
     <AboutRotW />
