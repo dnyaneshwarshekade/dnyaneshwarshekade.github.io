@@ -1,5 +1,5 @@
-import Typewriter from "typewriter-effect";
 import { useState } from "react";
+import Typewriter from "typewriter-effect";
 
 const Ingredients = () => {
   const [loading, setLoading] = useState(false);
@@ -58,7 +58,7 @@ const Ingredients = () => {
           onMouseEnter={handleMouseEnter}
         >
           <div className={`loading-bar ${loadCompleted ? 'loaded' : loading ? 'loading' : ''}`}>
-            <span>{loadCompleted ? "Loaded Ubuntu : Click here to check My Ubuntu Portfolio" : loading ? "Loading Ubuntu..." : "Click here to check My Ubuntu protfolio"}</span>
+            <span>{loadCompleted ? "Loaded Ubuntu : Click here to check My Ubuntu Portfolio" : loading ? "Loading Ubuntu..." : "Click here to check My Ubuntu portfolio"}</span>
           </div>
         </div>
       </div>
