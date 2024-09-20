@@ -23,7 +23,7 @@ type WorkExperience = {
 const workExperiences: WorkExperience[] = [
   {
     id: 1,
-    logo: "/images/work-experience/softaculous.svg",
+    logo: "/images/work-experience/softaculous.png",
     name: "Softaculous Limited",
     period: { start: "Feb 23", end: "Present" },
     position: "Linux Support Engineer",
@@ -56,7 +56,7 @@ const workExperiences: WorkExperience[] = [
   },
   {
     id: 2,
-    logo: "/images/work-experience/reliance.svg",
+    logo: "/images/work-experience/Reliance.svg",
     name: "Reliance Industries Limited",
     period: { start: "Jan 23", end: "Jan 24" },
     position: "System Engineer",

@@ -23,7 +23,7 @@ type Education = {
 const education: Education[] = [
   {
     id: 1,
-    logo: "/images/education/udcs.png", // Update with the actual logo path
+    logo: "/images/education/udcs.jpg", // Update with the actual logo path
     institution: "Department of Computer Science, University of Mumbai",
     degree: "Master of Science (M.Sc)",
     study: "Computer Science",
@@ -33,7 +33,7 @@ const education: Education[] = [
   },
   {
     id: 2,
-    logo: "/images/education/ngacharya.png", // Update with the actual logo path
+    logo: "/images/education/acharya.jpg", // Update with the actual logo path
     institution: "N. G. Acharya & D. K. Marathe College",
     degree: "Bachelor of Science (B.Sc)",
     study: "Computer Science",
@@ -43,7 +43,7 @@ const education: Education[] = [
   },
   {
     id: 3,
-    logo: "/images/education/ycmou.png", // Update with the actual logo path
+    logo: "/images/education/ycm.jpg", // Update with the actual logo path
     institution: "YCMOU - Digital University",
     degree: "Bachelor of Arts",
     study: "Literature and History",
@@ -53,7 +53,7 @@ const education: Education[] = [
   },
   {
     id: 4,
-    logo: "/images/education/siws.png", // Update with the actual logo path
+    logo: "/images/education/siws.jpg", // Update with the actual logo path
     institution: "SIWS College",
     degree: "Higher Secondary Certificate (H.S.C)",
     study: "Science",
