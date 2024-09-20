@@ -7,7 +7,7 @@ const Ingredients = () => {
 
   const handleLoadClick = () => {
     if (loadCompleted) {
-      window.location.href = "https://dnyaneshwar.github.io";
+      window.location.href = "https://dnyaneshwarshekade.github.io";
     }
   };
 
@@ -58,7 +58,7 @@ const Ingredients = () => {
           onMouseEnter={handleMouseEnter}
         >
           <div className={`loading-bar ${loadCompleted ? 'loaded' : loading ? 'loading' : ''}`}>
-            <span>{loadCompleted ? "Loaded Ubuntu" : loading ? "Loading Ubuntu..." : "Hover to load Ubuntu"}</span>
+            <span>{loadCompleted ? "Loaded Ubuntu Portfolio Click to check" : loading ? "Loading Ubuntu..." : "Click here to Load Dnyaneshwar Ubuntu Portfolio"}</span>
           </div>
         </div>
       </div>
