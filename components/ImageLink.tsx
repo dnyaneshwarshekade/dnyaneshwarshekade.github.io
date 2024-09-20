@@ -10,10 +10,11 @@ type Props = {
   height?: number;
   dimensions?: Dimensions;
   imageClassName?: string;
+  className?: string; // Add className to Props type
 };
 
-const ImageLink: React.FC<Props> = ({ src, alt, href = "#", height, dimensions, imageClassName }) => (
-  <div className="relative overflow-hidden shadow rounded group">
+const ImageLink: React.FC<Props> = ({ src, alt, href = "#", height, dimensions, imageClassName, className }) => (
+  <div className={clsx("relative overflow-hidden shadow rounded group", className)}>
     <a href={href} target="_blank" rel="noreferrer" className="flex">
       {dimensions ? (
         <img

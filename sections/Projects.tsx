@@ -58,10 +58,10 @@ const Projects = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div id={Section.Projects}>
+    <div id={Section.Projects} className="px-4">
       {getSectionHeading(Section.Projects)}
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <div key={index} className="flex flex-col gap-2">
             <ImageLink
@@ -69,6 +69,7 @@ const Projects = () => {
               src={project.image}
               dimensions={{ width: 500, height: 250 }}
               href={project.link.web || project.link.github}
+              className="rounded-lg overflow-hidden"
             />
 
             <h4 className="text-lg font-bold">{project.name}</h4>
@@ -98,7 +99,7 @@ const Projects = () => {
         ))}
       </div>
 
-      <Button icon={FaGithub} className="mt-8" onClick={() => openURLInNewTab(links.github)}>
+      <Button icon={FaGithub} className="mt-8 w-full sm:w-auto" onClick={() => openURLInNewTab(links.github)}>
         Projects on GitHub
       </Button>
     </div>
