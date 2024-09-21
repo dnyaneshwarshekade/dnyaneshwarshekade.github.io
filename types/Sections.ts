@@ -38,6 +38,7 @@ export type Article = {
   tag_list: string[];
 };
 
+
 export type Language = {
   id: number;
   text: string;

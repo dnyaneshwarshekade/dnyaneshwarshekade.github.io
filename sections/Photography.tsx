@@ -20,7 +20,7 @@ const Photography: React.FC<Props> = ({ instagramMedia }) => (
         .map((media) => {
           // CDN Subdomain Replacement Hack for whitelisted URLs in next/image
           // (https://github.com/vercel/next.js/discussions/18429#discussioncomment-989303)
-          const src = media.media_url.replace(/^[^.]*/, "https://scontent");
+          const src = media.media_url.replace(/^[^.]*/, "");
 
           return (
             <ImageLink
@@ -28,7 +28,7 @@ const Photography: React.FC<Props> = ({ instagramMedia }) => (
               key={media.id}
               href={media.permalink}
               imageClassName="aspect-square"
-              alt={`${media.id} - Amruth Pillai`}
+              alt={`${media.id} - shekade_dnyaneshwar`}
               dimensions={{ width: 512, height: 512 }}
             />
           );

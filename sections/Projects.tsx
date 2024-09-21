@@ -1,6 +1,5 @@
 import Tippy from "@tippyjs/react";
 import Button from "components/Button";
-import ImageLink from "components/ImageLink";
 import links from "data/links";
 import { BiLinkExternal } from "react-icons/bi";
 import { FaGithub } from "react-icons/fa";
@@ -17,7 +16,6 @@ interface Project {
     github: string;
     web: string;
   };
-  image: string;
 }
 
 const Projects = () => {
@@ -43,7 +41,6 @@ const Projects = () => {
               github: repo.html_url,
               web: repo.homepage || '',
             },
-            image: `https://via.placeholder.com/500x250?text=${repo.name}`, // Placeholder image
           }));
 
         setProjects(formattedProjects);
@@ -66,18 +63,12 @@ const Projects = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {projects.map((project, index) => (
-          <div key={index} className="flex flex-col gap-2 p-4 border rounded-lg shadow-md transition-transform transform hover:scale-105">
-            <ImageLink
-              alt={project.name}
-              src={project.image}
-              dimensions={{ width: 500, height: 250 }}
-              href={project.link.web || project.link.github}
-              className="rounded-lg overflow-hidden"
-            />
+          <div key={index} className="flex flex-col gap-2 p-4 border rounded-lg shadow-md transition-transform transform hover:scale-105 hover:text-orange-500 active:text-orange-600">
+            <a href={project.link.github} target="_blank" rel="noreferrer" className="text-lg font-bold truncate">
+              {project.name}
+            </a>
 
-            <h4 className="text-lg font-bold truncate">{project.name}</h4> {/* Added truncate class */}
-
-            <p className="prose prose-sm prose-neutral dark:prose-invert overflow-hidden text-ellipsis whitespace-nowrap">{project.summary}</p> {/* Added overflow and text classes */}
+            <p className="prose prose-sm prose-neutral dark:prose-invert overflow-hidden text-ellipsis whitespace-nowrap">{project.summary}</p>
 
             {project.link && (
               <div className="mt-1 flex gap-4">

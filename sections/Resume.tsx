@@ -1,5 +1,4 @@
 import Button from "components/Button";
-import ImageLink from "components/ImageLink";
 import links from "data/links";
 import { Section } from "types/Sections";
 import { getSectionHeading } from "utils";
@@ -17,12 +16,15 @@ const Resume = () => {
       {getSectionHeading(Section.Resume)}
 
       <div className="flex flex-col md:flex-row items-center gap-12">
-        <div className="w-full flex-1">
-          <ImageLink
-            height={300}
-            href={links.resume}
+        <div 
+          className="w-full flex-1 cursor-pointer transform transition-transform duration-300 hover:scale-105" 
+          onClick={handleResumeAction}
+        >
+          <img
             src="/images/resume/cover.jpg"
             alt="Dnyaneshwar's Resume on Print"
+            height={300}
+            className="w-full h-auto rounded-lg shadow-md" // Add styles as needed
           />
         </div>
 

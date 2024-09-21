@@ -87,13 +87,13 @@ const Education: React.FC<Props> = ({ data, isFirst, isLast }) => {
         </div>
         <div>
           <h3
-            className={`text-base font-bold underline transition-colors ${
-              isHovered ? 'text-orange-500' : 'text-white'
+            className={`text-base font-bold transition-colors ${
+              isHovered ? 'text-orange-500' : 'text-black'
             }`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <a href={data.website} target="_blank" rel="noopener noreferrer">
+            <a href={data.website} target="_blank" rel="noopener noreferrer" className="hover:text-orange-500">
               {data.institution}
             </a>{" "}
             <span className="text-xs">

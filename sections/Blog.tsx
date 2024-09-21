@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Button from "components/Button";
-import ImageLink from "components/ImageLink";
 import links from "data/links";
 import { FaDev } from "react-icons/fa";
 import { Article, Section } from "types/Sections";
@@ -9,11 +8,12 @@ import { formatDateString, getSectionHeading, openURLInNewTab } from "utils";
 const Blog: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [visibleCount, setVisibleCount] = useState(5);
+  const [expandedArticleId, setExpandedArticleId] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch('https://dev.to/api/articles?username=dnyaneshwarshekade');
+        const response = await fetch("https://dev.to/api/articles?username=dnyaneshwarshekade");
         const data = await response.json();
         setArticles(data);
       } catch (error) {
@@ -28,32 +28,67 @@ const Blog: React.FC = () => {
     setVisibleCount((prevCount) => prevCount + 5);
   };
 
+  const handleArticleClick = (articleUrl: string) => {
+    window.open(articleUrl, "_blank");
+  };
+
+  const toggleExpandArticle = (id: number) => {
+    setExpandedArticleId(expandedArticleId === id ? null : id);
+  };
+
+  const getDescription = (description: string, article: Article) => {
+    const words = description.split(" ");
+    if (words.length > 20) {
+      const truncated = words.slice(0, 20).join(" ") + "...";
+      return (
+        <div>
+          <p className="prose prose-sm md:prose-base prose-neutral dark:prose-invert">
+            {truncated}
+          </p>
+          <Button onClick={() => toggleExpandArticle(article.id)} className="mt-2 text-sm">
+            Read More
+          </Button>
+          {expandedArticleId === article.id && (
+            <p className="prose prose-sm md:prose-base prose-neutral dark:prose-invert mt-2">
+              {description}
+            </p>
+          )}
+        </div>
+      );
+    }
+    return (
+      <p className="prose prose-sm md:prose-base prose-neutral dark:prose-invert">
+        {description}
+      </p>
+    );
+  };
+
   return (
     <div id={Section.Blog} className="p-4 md:p-6">
       {getSectionHeading(Section.Blog)}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.slice(0, visibleCount).map((article) => (
-          <div key={article.id} className="flex flex-col gap-4 p-4 border rounded-lg shadow-sm">
-            <ImageLink
-              href={article.url}
-              alt={article.title}
-              src={article.social_image}
-              height={250}
-              className="w-full h-auto"
-            />
-
-            <div>
+          <div key={article.id} className="flex flex-col gap-4 p-4 border rounded-lg shadow-sm transition-transform transform hover:scale-105 hover:text-orange-500 active:text-orange-600">
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault(); // Prevent default link behavior
+                handleArticleClick(article.url);
+              }}
+              className="flex flex-col"
+            >
               <h4 className="text-lg md:text-xl font-bold truncate">{article.title}</h4>
               <p className="mt-1 text-xs md:text-sm">
                 Published on {formatDateString(article.published_at)} | {article.public_reactions_count} Reactions
               </p>
-            </div>
-
-            <p className="prose prose-sm md:prose-base prose-neutral dark:prose-invert">{article.description}</p>
+              {getDescription(article.description, article)}
+            </a>
 
             {article.tag_list.length > 0 && (
-              <p className="text-xs leading-relaxed font-bold">{article.tag_list.map((tag) => `#${tag}`).join(" ")}</p>
+              <p className="text-xs leading-relaxed font-bold">
+                {article.tag_list.map((tag) => `#${tag}`).join(" ")}
+              </p>
             )}
           </div>
         ))}
