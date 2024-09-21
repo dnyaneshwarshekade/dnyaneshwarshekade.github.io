@@ -7,7 +7,7 @@ import { formatDateString, getSectionHeading, openURLInNewTab } from "utils";
 
 const Blog: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [visibleCount, setVisibleCount] = useState(12);
+  const [visibleCount, setVisibleCount] = useState(5);
   const [expandedArticleId, setExpandedArticleId] = useState<number | null>(null);
 
   const fetchArticles = async () => {
