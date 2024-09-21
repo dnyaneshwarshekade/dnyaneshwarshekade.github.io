@@ -7,33 +7,23 @@ import { formatDateString, getSectionHeading, openURLInNewTab } from "utils";
 
 const Blog: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [visibleCount, setVisibleCount] = useState(12);
+  const [visibleCount, setVisibleCount] = useState(5);
   const [expandedArticleId, setExpandedArticleId] = useState<number | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   const fetchArticles = async () => {
-    console.log("Fetching articles...");
     try {
       const response = await fetch("https://dev.to/api/articles?username=dnyaneshwarshekade");
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
       const data = await response.json();
-      console.log("Articles fetched:", data);
       setArticles(data);
     } catch (error) {
       console.error("Error fetching articles from Dev.to:", error);
-      setError("Failed to load articles. Please try again later.");
     }
   };
 
   useEffect(() => {
     fetchArticles(); // Initial fetch
 
-    const intervalId = setInterval(() => {
-      fetchArticles(); // Fetch articles every 10 seconds
-      console.log("Fetching articles at interval..."); // Log fetch attempt
-    }, 10000);
+    const intervalId = setInterval(fetchArticles, 10000); // Fetch articles every 10 seconds
 
     return () => clearInterval(intervalId); // Cleanup on unmount
   }, []);
@@ -80,8 +70,6 @@ const Blog: React.FC = () => {
   return (
     <div id={Section.Blog} className="p-4 md:p-6">
       {getSectionHeading(Section.Blog)}
-      
-      {error && <p className="text-red-500">{error}</p>}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.slice(0, visibleCount).map((article) => (
