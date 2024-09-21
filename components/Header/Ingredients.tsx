@@ -7,7 +7,7 @@ const Ingredients = () => {
 
   const handleLoadClick = () => {
     if (loadCompleted) {
-      window.location.href = "https://dnyaneshwarshekade.github.io";
+      window.location.href = "https://dnyaneshwarshekade.github.io/portfolio";
     }
   };
 
