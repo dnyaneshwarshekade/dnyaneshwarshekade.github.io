@@ -23,14 +23,14 @@ const Music = () => (
         <Button
           icon={FaSpotify}
           className="mt-8 text-sm"
-          onClick={() => openURLInNewTab("https://open.spotify.com/playlist/58Kg5IirKtASXLYosizqnm")}
+          onClick={() => openURLInNewTab("https://open.spotify.com/embed/playlist/4ynog50nYPDm024X0NJ9Ho?utm_source=generator")}
         >
           Listen to My Everyday on Spotify
         </Button>
       </div>
 
       <iframe
-        src="https://open.spotify.com/embed/playlist/58Kg5IirKtASXLYosizqnm"
+        src="https://open.spotify.com/embed/playlist/4ynog50nYPDm024X0NJ9Ho?utm_source=generator"
         width="100%"
         height="512"
         frameBorder="0"
@@ -42,3 +42,4 @@ const Music = () => (
 );
 
 export default Music;
+
