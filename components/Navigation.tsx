@@ -25,7 +25,7 @@ const Navigation = () => {
             onClick={animateScroll.scrollToTop}
             className="p-1 flex cursor-pointer grayscale hover:grayscale-0 transition-[filter]"
           >
-            <Image src="/images/icon.png" alt="Amruth Pillai" width={30} height={32} />
+            <Image src="/images/icon.png" alt="Dnyaneshwar Shekade" width={30} height={32} />
           </div>
         </Tippy>
 
