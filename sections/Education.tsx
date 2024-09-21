@@ -75,12 +75,12 @@ const Education: React.FC<Props> = ({ data, isFirst, isLast }) => {
   return (
     <div className="flex group">
       <div
-        className={clsx("ml-1 w-1 flex-shrink-0 bg-neutral-500/25", {
+        className={clsx("ml-1 w-1 flex-shrink-0 bg-neutral-500/25 dark:bg-neutral-700/50", {
           "rounded-t": isFirst,
           "rounded-b": isLast,
         })}
       />
-      <div className="-ml-2 mt-8 flex-shrink-0 relative w-3 h-3 rounded-full shadow-lg bg-teal-500/80 dark:bg-white/80 group-hover:w-6 transition-[width]" />
+      <div className="-ml-2 mt-8 flex-shrink-0 relative w-3 h-3 rounded-full shadow-lg bg-teal-500/80 dark:bg-teal-300/80 group-hover:w-6 transition-[width]" />
       <div className="mt-5 ml-8 grid gap-2 pb-2">
         <div className="relative w-10 h-10">
           <Image src={data.logo} width={40} height={40} alt={data.institution} className="object-contain" />
@@ -88,23 +88,23 @@ const Education: React.FC<Props> = ({ data, isFirst, isLast }) => {
         <div>
           <h3
             className={`text-base font-bold transition-colors ${
-              isHovered ? 'text-orange-500' : 'text-black'
+              isHovered ? 'text-orange-500 dark:text-orange-400' : 'text-black dark:text-white'
             }`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <a href={data.website} target="_blank" rel="noopener noreferrer" className="hover:text-orange-500">
+            <a href={data.website} target="_blank" rel="noopener noreferrer" className="hover:text-orange-500 dark:hover:text-orange-400">
               {data.institution}
             </a>{" "}
-            <span className="text-xs">
+            <span className="text-xs dark:text-gray-400">
               ({data.period.start} - {data.period.end})
             </span>
           </h3>
-          <h4>
+          <h4 className="text-gray-700 dark:text-gray-300">
             {data.degree}, {data.study}
           </h4>
         </div>
-        <h5 className="my-1 flex gap-2 items-center text-xs">
+        <h5 className="my-1 flex gap-2 items-center text-xs text-gray-600 dark:text-gray-400">
           <FaLocationArrow />
           <span>{data.location}</span>
         </h5>
@@ -131,7 +131,7 @@ const EducationTimeline = () => {
       {!showMore && (
         <Tippy content={`Show ${education.length - DISPLAY_COUNT} More`} placement="right">
           <div className="inline-block ml-8 p-2 cursor-pointer" onClick={() => setShowMore(true)}>
-            <MdMoreHoriz size="24" />
+            <MdMoreHoriz size="24" className="dark:text-gray-300" />
           </div>
         </Tippy>
       )}
