@@ -7,49 +7,29 @@ import { formatDateString, getSectionHeading, openURLInNewTab } from "utils";
 
 const Blog: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [visibleCount, setVisibleCount] = useState(10); // Show 10 initially
+  const [visibleCount, setVisibleCount] = useState(12);
   const [expandedArticleId, setExpandedArticleId] = useState<number | null>(null);
-  const [page, setPage] = useState(1); // For pagination
-  const [loading, setLoading] = useState(true); // Track loading state
-  const [error, setError] = useState<string | null>(null); // Track error state
-  const [totalDisplayed, setTotalDisplayed] = useState(0); // Track the number of displayed articles
 
-  // Fetch articles from Dev.to
-  const fetchArticles = async (replace = false) => {
+  const fetchArticles = async () => {
     try {
-      const response = await fetch(
-        `https://dev.to/api/articles?username=dnyaneshwarshekade&page=1`
-      );
+      const response = await fetch("https://dev.to/api/articles?username=dnyaneshwarshekade");
       const data = await response.json();
-      console.log("Fetched articles:", data); // Log fetched data
-
-      if (data.length === 0) {
-        setError("No more articles available.");
-      } else {
-        // If replace is true, replace the old articles with the new ones
-        setArticles(replace ? data : [...data, ...articles]);
-        setTotalDisplayed(data.length); // Update displayed count
-      }
+      setArticles(data);
     } catch (error) {
       console.error("Error fetching articles from Dev.to:", error);
-      setError("Error fetching articles. Please try again later.");
-    } finally {
-      setLoading(false); // Stop loading after fetch
     }
   };
 
   useEffect(() => {
-    fetchArticles(true); // Initial fetch with replace true to get the latest articles
+    fetchArticles(); // Initial fetch
 
-    const intervalId = setInterval(() => {
-      fetchArticles(true); // Fetch new articles every 10 seconds, replacing old ones
-    }, 10000);
+    const intervalId = setInterval(fetchArticles, 10000); // Fetch articles every 10 seconds
 
-    return () => clearInterval(intervalId); // Cleanup interval on unmount
-  }, []); // Only run on initial render
+    return () => clearInterval(intervalId); // Cleanup on unmount
+  }, []);
 
   const handleShowMore = () => {
-    setPage((prevPage) => prevPage + 1); // Fetch next page
+    setVisibleCount((prevCount) => prevCount + 5);
   };
 
   const handleArticleClick = (articleUrl: string) => {
@@ -87,27 +67,13 @@ const Blog: React.FC = () => {
     );
   };
 
-  if (loading) {
-    return <p>Loading articles...</p>; // Display loading state
-  }
-
-  if (error) {
-    return <p>{error}</p>; // Display error message
-  }
-
   return (
     <div id={Section.Blog} className="p-4 md:p-6">
       {getSectionHeading(Section.Blog)}
 
-      {/* Display total number of blogs */}
-      <p>Total blogs displayed: {totalDisplayed}</p>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.slice(0, visibleCount).map((article) => (
-          <div
-            key={article.id}
-            className="flex flex-col gap-4 p-4 border rounded-lg shadow-sm transition-transform transform hover:scale-105 hover:text-orange-500 active:text-orange-600"
-          >
+          <div key={article.id} className="flex flex-col gap-4 p-4 border rounded-lg shadow-sm transition-transform transform hover:scale-105 hover:text-orange-500 active:text-orange-600">
             <a
               href="#"
               onClick={(e) => {
@@ -118,8 +84,7 @@ const Blog: React.FC = () => {
             >
               <h4 className="text-lg md:text-xl font-bold truncate">{article.title}</h4>
               <p className="mt-1 text-xs md:text-sm">
-                Published on {formatDateString(article.published_at)} |{" "}
-                {article.public_reactions_count} Reactions
+                Published on {formatDateString(article.published_at)} | {article.public_reactions_count} Reactions
               </p>
               {getDescription(article.description, article)}
             </a>
