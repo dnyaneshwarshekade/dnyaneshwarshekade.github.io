@@ -1,39 +1,26 @@
-import "animate.css"; // Animation styles
-import "tippy.js/dist/tippy.css"; // Tooltip styles
-import "styles/globals.css"; // Your global styles
+import "animate.css";
+import "tippy.js/dist/tippy.css";
+import "styles/globals.css";
 
-import Navigation from "components/Navigation"; // Navigation component
-import NoSSR from "components/NoSSR"; // NoSSR wrapper
-import ThemeProvider from "contexts/ThemeProvider"; // Theme context
-import type { AppProps } from "next/app"; // Type for app props
-import Head from "next/head"; // Head component for metadata
-import { Roboto } from 'next/font/google'; // Google Font
-
-// Import Google Font
-const roboto = Roboto({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-});
+import Navigation from "components/Navigation";
+import NoSSR from "components/NoSSR";
+import ThemeProvider from "contexts/ThemeProvider";
+import type { AppProps } from "next/app";
+import Head from "next/head";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>Dnyaneshwar Shekade&apos;s - Portfolio</title>
-        <meta name="description" content="Portfolio of Dnyaneshwar Shekade, a Linux Server & DevOps Engineer with expertise in server management, cloud services, and virtualization." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="index, follow" />
+      <title>Dnyaneshwar Shekade&apos;s - Portfolio</title>
       </Head>
 
       <ThemeProvider>
-        <div className={roboto.className}>
-          <Component {...pageProps} />
+        <Component {...pageProps} />
 
-          <NoSSR>
-            <Navigation />
-          </NoSSR>
-        </div>
+        <NoSSR>
+          <Navigation />
+        </NoSSR>
       </ThemeProvider>
     </>
   );
