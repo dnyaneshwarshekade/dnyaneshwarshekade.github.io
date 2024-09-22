@@ -12,9 +12,16 @@ const Blog: React.FC = () => {
 
   const fetchArticles = async () => {
     try {
-      const response = await fetch("https://dev.to/api/articles?username=dnyaneshwarshekade");
+      // Add a cache-busting parameter (timestamp)
+      const response = await fetch(
+        `https://dev.to/api/articles?username=dnyaneshwarshekade&timestamp=${new Date().getTime()}`
+      );
       const data = await response.json();
-      setArticles(data);
+
+      // Ensure new articles are added if they are not already in the state
+      if (JSON.stringify(data) !== JSON.stringify(articles)) {
+        setArticles(data);
+      }
     } catch (error) {
       console.error("Error fetching articles from Dev.to:", error);
     }
@@ -26,7 +33,7 @@ const Blog: React.FC = () => {
     const intervalId = setInterval(fetchArticles, 10000); // Fetch articles every 10 seconds
 
     return () => clearInterval(intervalId); // Cleanup on unmount
-  }, []);
+  }, [articles]); // Include articles as a dependency to trigger re-fetch on updates
 
   const handleShowMore = () => {
     setVisibleCount((prevCount) => prevCount + 5);
