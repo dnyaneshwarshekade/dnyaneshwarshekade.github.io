@@ -47,7 +47,7 @@ const Blog: React.FC = () => {
   }, [page]);
 
   useEffect(() => {
-    // Always keep the latest 5 articles in a separate state
+    // Update latest articles whenever articles change
     const latest = articles.slice(0, 5);
     setLatestArticles(latest);
   }, [articles]);
@@ -142,6 +142,10 @@ const Blog: React.FC = () => {
               Read More Articles
             </Button>
           )}
+
+          <Button icon={FaDev} className="mt-8 px-4 py-2" onClick={() => openURLInNewTab(links.dev)}>
+            Dnyaneshwar Articles on DEV
+          </Button>
         </>
       )}
     </div>
