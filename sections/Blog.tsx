@@ -10,29 +10,28 @@ const Blog: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
-  const articleIds = new Set<string>();
+  const articleIds = new Set<string>(); // Set to track unique article IDs
 
   const fetchArticles = async (page: number) => {
     setLoading(true);
     setError(null);
     try {
       const response = await fetch(`https://dev.to/api/articles?username=dnyaneshwarshekade&page=${page}`);
-      if (!response.ok) throw new Error("Failed to fetch articles");
-      
+      if (!response.ok) {
+        throw new Error("Failed to fetch articles");
+      }
       const data = await response.json();
+      
+      // Filter out duplicates
       const newArticles = data.filter((article: Article) => {
         if (!articleIds.has(article.id.toString())) {
           articleIds.add(article.id.toString());
-          return true;
+          return true; // Keep the article
         }
-        return false;
+        return false; // Filter out the duplicate
       });
 
-      if (newArticles.length === 0) {
-        setError("No new articles available.");
-      } else {
-        setArticles((prevArticles) => [...prevArticles, ...newArticles]);
-      }
+      setArticles((prevArticles) => [...prevArticles, ...newArticles]); // Append unique articles
     } catch (error) {
       console.error(error);
       setError("Error fetching articles from Dev.to. Please try again later.");
@@ -42,37 +41,50 @@ const Blog: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchArticles(page);
+    fetchArticles(page); // Fetch articles for the current page
   }, [page]);
 
   const loadMoreArticles = () => {
-    setPage((prevPage) => prevPage + 1);
+    setPage((prevPage) => prevPage + 1); // Increment page number to load more articles
+  };
+
+  const handleArticleClick = (e: React.MouseEvent, articleUrl: string) => {
+    e.preventDefault();
+    window.open(articleUrl, "_blank", "noopener,noreferrer");
   };
 
   const getDescription = (description: string) => {
     const words = description.split(" ");
-    const truncated = words.length > 20 ? `${words.slice(0, 20).join(" ")}...` : description;
-    return <p className="prose prose-sm md:prose-base prose-neutral dark:prose-invert">{truncated}</p>;
+    if (words.length > 20) {
+      const truncated = words.slice(0, 20).join(" ") + "...";
+      return (
+        <p className="prose prose-sm md:prose-base prose-neutral dark:prose-invert">
+          {truncated}
+        </p>
+      );
+    }
+    return (
+      <p className="prose prose-sm md:prose-base prose-neutral dark:prose-invert">
+        {description}
+      </p>
+    );
   };
 
   return (
     <div id={Section.Blog} className="p-4 md:p-6">
       {getSectionHeading(Section.Blog)}
 
-      {loading && <p aria-live="polite">Loading...</p>}
-      {error && <p className="text-red-500" aria-live="assertive">{error}</p>}
+      {loading && <p>Loading...</p>}
+      {error && <p className="text-red-500">{error}</p>}
       
-      {!loading && !error && articles.length === 0 && <p>No articles found.</p>}
-
-      {!loading && !error && articles.length > 0 && (
+      {!loading && !error && (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.map((article) => (
               <div key={article.id} className="flex flex-col gap-4 p-4 border rounded-lg shadow-sm transition-transform transform hover:scale-105 hover:text-orange-500 active:text-orange-600">
                 <a
                   href={article.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={(e) => handleArticleClick(e, article.url)}
                   className="flex flex-col"
                 >
                   <h4 className="text-lg md:text-xl font-bold truncate">{article.title}</h4>
@@ -81,6 +93,7 @@ const Blog: React.FC = () => {
                   </p>
                   {getDescription(article.description)}
                 </a>
+
                 {article.tag_list.length > 0 && (
                   <p className="text-xs leading-relaxed font-bold">
                     {article.tag_list.map((tag) => `#${tag}`).join(" ")}
