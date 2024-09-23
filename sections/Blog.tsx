@@ -103,9 +103,10 @@ const Blog: React.FC = () => {
             ))}
           </div>
 
-          <Button className="mt-4 px-4 py-2" onClick={loadMoreArticles}>
-            Load More Articles
-          </Button>
+<Button className="px-3 py-1 bg-gray-200 text-black border rounded" onClick={loadMoreArticles}>
+  Load More Articles
+</Button>
+
 
           <Button icon={FaDev} className="mt-8 px-4 py-2" onClick={() => openURLInNewTab(links.dev)}>
             Dnyaneshwar Articles on DEV
