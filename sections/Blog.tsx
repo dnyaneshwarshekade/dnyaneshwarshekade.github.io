@@ -7,11 +7,9 @@ import { formatDateString, getSectionHeading, openURLInNewTab } from "utils";
 
 const Blog: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [latestArticles, setLatestArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
-  const [showMore, setShowMore] = useState(false);
   const articleIds = new Set<string>(); // Set to track unique article IDs
 
   const fetchArticles = async (page: number) => {
@@ -45,12 +43,6 @@ const Blog: React.FC = () => {
   useEffect(() => {
     fetchArticles(page); // Fetch articles for the current page
   }, [page]);
-
-  useEffect(() => {
-    // Update latest articles whenever articles change
-    const latest = articles.slice(0, 5);
-    setLatestArticles(latest);
-  }, [articles]);
 
   const loadMoreArticles = () => {
     setPage((prevPage) => prevPage + 1); // Increment page number to load more articles
@@ -88,7 +80,7 @@ const Blog: React.FC = () => {
       {!loading && !error && (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {latestArticles.map((article) => (
+            {articles.map((article) => (
               <div key={article.id} className="flex flex-col gap-4 p-4 border rounded-lg shadow-sm transition-transform transform hover:scale-105 hover:text-orange-500 active:text-orange-600">
                 <a
                   href={article.url}
@@ -111,37 +103,9 @@ const Blog: React.FC = () => {
             ))}
           </div>
 
-          {showMore && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4">
-              {articles.slice(5).map((article) => (
-                <div key={article.id} className="flex flex-col gap-4 p-4 border rounded-lg shadow-sm transition-transform transform hover:scale-105 hover:text-orange-500 active:text-orange-600">
-                  <a
-                    href={article.url}
-                    onClick={(e) => handleArticleClick(e, article.url)}
-                    className="flex flex-col"
-                  >
-                    <h4 className="text-lg md:text-xl font-bold truncate">{article.title}</h4>
-                    <p className="mt-1 text-xs md:text-sm">
-                      Published on {formatDateString(article.published_at)} | {article.public_reactions_count} Reactions
-                    </p>
-                    {getDescription(article.description)}
-                  </a>
-
-                  {article.tag_list.length > 0 && (
-                    <p className="text-xs leading-relaxed font-bold">
-                      {article.tag_list.map((tag) => `#${tag}`).join(" ")}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-
-          {!showMore && (
-            <Button className="mt-4 px-4 py-2" onClick={() => setShowMore(true)}>
-              Read More Articles
-            </Button>
-          )}
+          <Button className="mt-4 px-4 py-2" onClick={loadMoreArticles}>
+            Load More Articles
+          </Button>
 
           <Button icon={FaDev} className="mt-8 px-4 py-2" onClick={() => openURLInNewTab(links.dev)}>
             Dnyaneshwar Articles on DEV
