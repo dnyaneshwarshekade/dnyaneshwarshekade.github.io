@@ -15,19 +15,13 @@ const Blog: React.FC = () => {
   const fetchArticles = async (page: number) => {
     setLoading(true);
     setError(null);
-
-    // Clear articleIds if fetching the first page
-    if (page === 1) {
-      articleIds.clear();
-    }
-
     try {
       const response = await fetch(`https://dev.to/api/articles?username=dnyaneshwarshekade&page=${page}`);
       if (!response.ok) {
         throw new Error("Failed to fetch articles");
       }
       const data = await response.json();
-
+      
       // Filter out duplicates
       const newArticles = data.filter((article: Article) => {
         if (!articleIds.has(article.id.toString())) {
@@ -50,15 +44,6 @@ const Blog: React.FC = () => {
     fetchArticles(page); // Fetch articles for the current page
   }, [page]);
 
-  // Optional: Poll for new articles every 30 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetchArticles(1); // Fetch the first page regularly to check for new articles
-    }, 30000); // 30 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
-
   const loadMoreArticles = () => {
     setPage((prevPage) => prevPage + 1); // Increment page number to load more articles
   };
@@ -70,10 +55,17 @@ const Blog: React.FC = () => {
 
   const getDescription = (description: string) => {
     const words = description.split(" ");
-    const truncated = words.length > 20 ? `${words.slice(0, 20).join(" ")}...` : description;
+    if (words.length > 20) {
+      const truncated = words.slice(0, 20).join(" ") + "...";
+      return (
+        <p className="prose prose-sm md:prose-base prose-neutral dark:prose-invert">
+          {truncated}
+        </p>
+      );
+    }
     return (
       <p className="prose prose-sm md:prose-base prose-neutral dark:prose-invert">
-        {truncated}
+        {description}
       </p>
     );
   };
@@ -113,10 +105,6 @@ const Blog: React.FC = () => {
 
           <Button className="mt-4 px-4 py-2" onClick={loadMoreArticles}>
             Load More Articles
-          </Button>
-
-          <Button className="mt-4" onClick={() => fetchArticles(1)}>
-            Refresh Articles
           </Button>
 
           <Button icon={FaDev} className="mt-8 px-4 py-2" onClick={() => openURLInNewTab(links.dev)}>
