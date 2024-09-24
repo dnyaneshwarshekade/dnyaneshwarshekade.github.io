@@ -4,6 +4,7 @@ import Input from "components/Input";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaPaperPlane } from "react-icons/fa";
+import emailjs from 'emailjs-com'; // Import EmailJS
 import { Section } from "types/Sections";
 import { getSectionHeading } from "utils";
 
@@ -21,11 +22,30 @@ const Contact = () => {
   } = useForm<FormData>();
 
   const [isSubmitted, setSubmitted] = useState(false);
-
   const [submit, submitting] = useFormspark({ formId: "LVr3mgSu" });
+
+  const sendEmail = async (data: FormData) => {
+    try {
+      // Replace these with your EmailJS serviceID, templateID, and userID
+      const serviceID = "service_hcwcbpn";
+      const templateID = "template_srws30f";
+      const userID = "Jt9txYGgh3Okc4p-Q";
+
+      const emailParams = {
+        from_name: data.name,
+        from_email: data.email,
+        message: data.message,
+      };
+
+      await emailjs.send(serviceID, templateID, emailParams, userID);
+    } catch (error) {
+      console.error("Failed to send email:", error);
+    }
+  };
 
   const onSubmit = handleSubmit(async (data) => {
     await submit(data);
+    await sendEmail(data); // Send email via EmailJS after form submission
     setSubmitted(true);
   });
 
@@ -53,7 +73,7 @@ const Contact = () => {
           label="Full Name"
           className="md:w-3/4"
           hasError={!!errors.name}
-          placeholder="Regina Phalange"
+          placeholder="You Name"
           description={errors.name?.message || "The one where you tell me your name"}
           {...register("name", { required: { value: true, message: "This is a required field" } })}
         />
@@ -63,7 +83,7 @@ const Contact = () => {
           className="md:w-3/4"
           label="Email Address"
           hasError={!!errors.email}
-          placeholder="regina@centralperk.com"
+          placeholder="your@email.com"
           description={errors.email?.message || "The one where you tell me how I can contact you back"}
           {...register("email", {
             required: { value: true, message: "This is a required field" },
