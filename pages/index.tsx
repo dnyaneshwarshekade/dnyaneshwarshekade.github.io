@@ -1,7 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 import {
   AboutMe,
-  AboutRotW,
   Achievements,
   Blog,
   Certifications,
@@ -60,7 +59,6 @@ const Home: NextPage<Props> = ({ articles, dribbbleShots, instagramMedia }) => (
     <Music />
     <Resume />
     <Contact />
-    <AboutRotW />
     <Footer />
   </div>
 );

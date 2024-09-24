@@ -1,5 +1,4 @@
 export { default as AboutMe } from "./AboutMe";
-export { default as AboutRotW } from "./AboutRotW";
 export { default as Achievements } from "./Achievements";
 export { default as Blog } from "./Blog";
 export { default as Certifications } from "./Certifications";
